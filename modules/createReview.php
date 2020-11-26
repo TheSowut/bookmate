@@ -17,15 +17,20 @@
 <?php
     include '../db/db.php';
 ?>
-<form action="modules/previewReviews.php" method="POST">
-    <label>Име на книга: <input name="book_name" required></label>
-    <label>Автор на книга: <input name="book_author" required></label>
-    <label>Рецензия на книга: <input name="book_review" required></label>
-    <label>Оценка: <select name="book_score">
+<form action="../modules/previewReviews.php" method="POST">
+    <label>Име на книга: <input name="book_name" placeholder="1984" required></label>
+    <label>Автор на книга: <input name="book_author" placeholder="Джордж Оруел" required></label>
+    <label>Рецензия на книга: <input name="book_review" placeholder="Примерна резензия"required></label>
+    <label>Оценка на книга: <select name="book_score" required>
             <?php
-                for ($i = 1; $i <= 5; $i++) {
-                    echo "<option value='{$i}'>{$i}</option>";
-                }
+                $scores = array(1 => "Безинтересна",
+                    2 => "Нищо особено",
+                    3 => "Има своите плюсове",
+                    4 => "Впечатляваща",
+                    5 => "Неповторимо четиво");
+            foreach($scores as $s => $s_info) {
+                echo "<option value='{$s}' selected>{$s} - {$s_info}</option>";
+            }
             ?>
         </select></label>
     <button type="submit">Запиши</button>

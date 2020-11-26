@@ -14,14 +14,40 @@ body  {
 }
 
 form {
+    margin: 10% auto;
     display: flex;
+    align-items: center;
     flex-direction: column;
+    justify-content: space-evenly;
+    height: 50vh;
+
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+form label {
+    color: #fff;
+    font-size: 1.6em;
 }
 
 form input {
     border: 1px solid black;
+    font-size: 0.7em;
+    padding: 0.2em;
 }
 
-form button {
-    width: 10%;
+select {
+    font-size: 0.7em;
+}
+
+button {
+    font-size: 1.3em;
+    padding: 0.5em 2em;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: .5s all;
+    cursor: pointer;
+}
+
+form label, form input, select, button {
+    font-family: "Roboto Light";
 }

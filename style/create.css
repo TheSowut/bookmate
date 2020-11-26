@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body  {
+    background: url('../images/create.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    border: 1px solid black;
+}
+
+form button {
+    width: 10%;
+}

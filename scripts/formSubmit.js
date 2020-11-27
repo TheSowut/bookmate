@@ -1,8 +1,5 @@
 $(document).ready(function() {
-    // arrow function which prevents the submission of the form
-    $("form").submit(preventSubmit = (e) => {
-        // e.preventDefault(e);
+    $("form").submit(alertOnSuccess = () => {
         alert('Book succesfully added!')
     })
 })
-

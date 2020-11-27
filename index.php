@@ -6,7 +6,6 @@
     <title>Book Mate</title>
 
     <link rel="stylesheet" type="text/css" href="style/index.css" />
-    <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="images/icon.ico"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,13 +14,25 @@
 </head>
 <body>
 <?php
+    session_start();
     include 'db/db.php';
+    include 'modules/nav.php';
+    include 'scripts/defaultLocale.php';
 ?>
 
 <main>
-    <a href="modules/createReview.php">създай</a>
-    <a href="modules/previewReviews.php">прегледай</a>
-</main>
+    <?php
+//    Obtain the session variable for language and keep it in a var named $lang.
+        $lang = $_SESSION['lang'];
 
+        if ($lang == 'bg') {
+            echo "<a id='test' href='modules/createReview.php'>създай</a>
+            <a href='modules/previewReviews.php'>прегледай</a>";
+        } else {
+            echo "<a href='modules/createReview.php'>create</a>
+            <a href='modules/previewReviews.php'>browse</a>";
+        }
+    ?>
+</main>
 </body>
 </html>

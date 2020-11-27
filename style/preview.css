@@ -1,12 +1,61 @@
 * {
-
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
-body  {
+body {
     background: url('../images/shelf.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: top center;
+
+    display: flex;
+    justify-content: center;
+
+    height: 100vh;
+
+    font-family: "Roboto Light";
+    color: #fff;
+}
+
+#result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#result h1 {
+    font-size: 2.3em;
+}
+
+th {
+    font-size: 1.4em;
+    user-select: none;
+}
+
+tr {
+    transition: .5s all;
+}
+
+tr:not(:first-child):hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+th, td {
+    padding: 0.5em 1.3em;
+}
+
+table, td, th {
+    border: 1px solid white;
+}
+
+table {
+    border-collapse: collapse;
 }

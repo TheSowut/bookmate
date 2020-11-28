@@ -26,7 +26,7 @@ main {
 
 main a {
     color: #fff;
-    font-family: "Roboto Light";
+    font-family: 'Roboto', sans-serif;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 3em;

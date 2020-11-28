@@ -1,27 +1,4 @@
-<style>
-    .pagination {
-        margin-top: 1em;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .pagination a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.5em;
-        border: 1px solid #fff;
-        padding: 0.1em;
-        transition: .3s all;
-    }
-
-    .pagination a:hover {
-        background-color: rgba(0, 0, 0, 0.7);
-    }
-</style>
-
 <!-- Acknowledgement to https://www.javatpoint.com/php-pagination for the pagination example. -->
-
 <?php
     // Obtain the total number of pages
     $query = "SELECT * FROM reviews";
@@ -92,7 +69,7 @@
         if ($total_pages > 1) {
             for ($i = 1; $i <= $total_pages; $i++) {
                 if ($i == $page) {
-                    $pagLink .= "<a class = 'active' href='previewReviews.php?page={$i}'>{$i}</a>";
+                    $pagLink .= "<a id='active' href='previewReviews.php?page={$i}'>{$i}</a>";
                 }
                 else  {
                     $pagLink .= "<a href='previewReviews.php?page={$i}'>{$i}</a>";
@@ -100,7 +77,7 @@
             }
         }
 
-        // Display the pages
+        // Display the pagination
         echo $pagLink;
 
         // Display Next if there are more pages available
@@ -112,3 +89,5 @@
         echo "<div id='result'><h1>Няма намерени ревюта.</h1></div>";
     }
 ?>
+
+<link rel="stylesheet" type="text/css" href="../style/pagination.css">

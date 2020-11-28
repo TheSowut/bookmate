@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../style/preview.css?v=1">
+    <link rel="stylesheet" type="text/css" href="../style/preview.css?">
     <link rel="icon" href="../images/icon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,7 +20,6 @@
     include '../modules/nav.php';
     include '../scripts/defaultLocale.php';
 
-    $lang = $_SESSION['lang'];
 //    Ternary expression which determines the confirm dialog language.
     $msg = 'en' ? 'Delete selected review?' : 'Изрий ревю?';
 
@@ -43,7 +42,7 @@
             'date' => "Date reviewed");
     }
 //    Script which loads the reviews and applies pagination
-    include '../scripts/reviewPagination.php';
+    include '../modules/reviewPagination.php';
 
 //    Script used to remove user reviews
     include '../scripts/reviewRemoval.php';

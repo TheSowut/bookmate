@@ -18,7 +18,6 @@ body {
     height: 100vh;
 
     font-family: 'Roboto', sans-serif;
-    color: #fff;
 }
 
 #result {
@@ -35,26 +34,33 @@ body {
     font-size: 2.3em;
 }
 
-th {
-    font-size: 1.4em;
-    user-select: none;
-}
-
 tr {
     transition: .5s all;
+    background: rgba(255, 255, 255, 0.75);
 }
 
 tr:not(:first-child):hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 1);
 }
 
-th, td {
+th {
+    font-size: 1.5em;
+    user-select: none;
     padding: 0.5em 1.3em;
 }
 
+td {
+    font-size: 1.25em;
+    padding: 0.3em 1em;
+}
+
+/*th, td {*/
+/*    padding: 0.5em 1.3em;*/
+/*}*/
+
 table, td, th {
-    border: 1px solid white;
+    border: 1px solid #000;
 }
 
 table {

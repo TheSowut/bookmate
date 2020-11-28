@@ -22,14 +22,10 @@
     include '../modules/nav.php';
     include '../scripts/defaultLocale.php';
 ?>
+
 <div class="container">
 <form action="../modules/previewReviews.php" method="POST">
     <?php
-        if (!isset($_SESSION['lang'])){
-            $_SESSION['lang'] = 'en';
-        }
-
-        $lang = $_SESSION['lang'];
         if ($lang == 'bg') {
             $fields = array('name' => "Име на книга:",
                 'author' => "Автор на книга:",
@@ -57,6 +53,7 @@
             $placeholders = array('author' => 'George Orwell',
                 'review' => 'Example review');
         }
+
         echo "<label>{$fields['name']} <input name='book_name'' placeholder='1984' required></label>
             <label>{$fields['author']} <input name='book_author' placeholder='{$placeholders["author"]}' required></label>
             <label>{$fields['review']} <input name='book_review' placeholder='{$placeholders["review"]}' required></label>
@@ -65,8 +62,9 @@
         foreach($scores as $s => $s_info) {
             echo "<option value='{$s}' selected>{$s} - {$s_info}</option>";
         }
-    echo "</select></label>";
-    echo "<button type='submit'>{$fields['button']}</button>";
+
+        echo "</select></label>";
+        echo "<button type='submit'>{$fields['button']}</button>";
     ?>
 </form>
 </div>

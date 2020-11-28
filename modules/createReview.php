@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Book Mate - Create</title>
 
-    <link rel="stylesheet" type="text/css" href="../style/create.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../style/create.css">
     <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="../images/icon.ico"/>
+    <link rel="icon" href="../images/icon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="scripts/formSubmit.js"></script>
@@ -20,14 +22,10 @@
     include '../modules/nav.php';
     include '../scripts/defaultLocale.php';
 ?>
+
 <div class="container">
 <form action="../modules/previewReviews.php" method="POST">
     <?php
-        if (!isset($_SESSION['lang'])){
-            $_SESSION['lang'] = 'en';
-        }
-
-        $lang = $_SESSION['lang'];
         if ($lang == 'bg') {
             $fields = array('name' => "Име на книга:",
                 'author' => "Автор на книга:",
@@ -55,15 +53,18 @@
             $placeholders = array('author' => 'George Orwell',
                 'review' => 'Example review');
         }
+
         echo "<label>{$fields['name']} <input name='book_name'' placeholder='1984' required></label>
-        <label>{$fields['author']} <input name='book_author' placeholder='{$placeholders["author"]}' required></label>
-        <label>{$fields['review']} <input name='book_review' placeholder='{$placeholders["review"]}' required></label>
-        <label>{$fields['score']} <select name='book_score' required>";
+            <label>{$fields['author']} <input name='book_author' placeholder='{$placeholders["author"]}' required></label>
+            <label>{$fields['review']} <input name='book_review' placeholder='{$placeholders["review"]}' required></label>
+            <label>{$fields['score']} <select name='book_score' required>";
+
         foreach($scores as $s => $s_info) {
             echo "<option value='{$s}' selected>{$s} - {$s_info}</option>";
         }
-    echo "</select></label>";
-    echo "<button type='submit'>{$fields['button']}</button>";
+
+        echo "</select></label>";
+        echo "<button type='submit'>{$fields['button']}</button>";
     ?>
 </form>
 </div>

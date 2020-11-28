@@ -11,14 +11,14 @@
     <link rel="icon" href="images/icon.ico"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="scripts/formSubmit.js"></script>
     <script>
         $(document).ready(function() {
             $('#login').click(handleLogin = () => {
+                $('main').load('auth/login.php');
             })
 
             $('#register').click(handleLogout = () => {
-                $('main').load('auth/login.php');
+                $('main').load('auth/register.php');
             })
         })
     </script>
@@ -71,7 +71,7 @@
         }
 
         if (isset ($_SESSION['userid'])) {
-            echo "<a href='modules/createReview.php'>{$create}</a>
+            echo "<a id='create' href='modules/createReview.php'>{$create}</a>
             <a href='modules/previewReviews.php'>{$browse}</a>";
         } else {
             echo "<a id='login'>{$login}</a>

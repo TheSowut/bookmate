@@ -12,6 +12,16 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="scripts/formSubmit.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#login').click(handleLogin = () => {
+            })
+
+            $('#register').click(handleLogout = () => {
+                $('main').load('auth/login.php');
+            })
+        })
+    </script>
 
 </head>
 <body>
@@ -25,14 +35,47 @@
 <main>
     <?php
 //    Obtain the session variable for language and keep it in a var named $lang.
-        $lang = $_SESSION['lang'];
+        $text = array(
+            'logged' => array(
+                'bulgarian' => array(
+                     'create' => 'създай',
+                     'browse' => 'прегледай'
+                ),
+                'english' => array(
+                    'create' => 'create',
+                    'browse' => 'browse'
+                )
+            ),
+            'notlogged' => array(
+                'bulgarian' => array(
+                    'login' => 'логин',
+                    'register' => 'регистрация'
+                ),
+                'english' => array(
+                    'login' => 'login',
+                    'register' => 'register'
+                ),
+            )
+        );
 
         if ($lang == 'bg') {
-            echo "<a id='test' href='modules/createReview.php'>създай</a>
-            <a href='modules/previewReviews.php'>прегледай</a>";
+            $create = $text['logged']['bulgarian']['create'];
+            $browse = $text['logged']['bulgarian']['browse'];
+            $login = $text['notlogged']['bulgarian']['login'];
+            $logout = $text['notlogged']['bulgarian']['register'];
         } else {
-            echo "<a href='modules/createReview.php'>create</a>
-            <a href='modules/previewReviews.php'>browse</a>";
+            $create = $text['logged']['english']['create'];
+            $browse = $text['logged']['english']['browse'];
+            $login = $text['notlogged']['english']['login'];
+            $logout = $text['notlogged']['english']['register'];
+        }
+
+        if (isset ($_SESSION['userid'])) {
+            echo "<a href='modules/createReview.php'>{$create}</a>
+            <a href='modules/previewReviews.php'>{$browse}</a>";
+        } else {
+            echo "<a id='login'>{$login}</a>
+            <a id='register'>{$logout}</a>";
         }
     ?>
 </main>

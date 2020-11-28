@@ -8,10 +8,11 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../style/preview.css?">
+    <link rel="stylesheet" type="text/css" href="../style/preview.css">
     <link rel="icon" href="../images/icon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../scripts/goBackOnEsc.js"></script>
 </head>
 <body>
 <?php
@@ -32,14 +33,16 @@
             'author' => "Автор",
             'review' => "Ревю",
             'score' => "Оценка",
-            'date' => "Дата на ревю");
+            'date' => "Дата на ревю",
+            'return' => 'или натисни esc за връщане');
     } else {
         $headers = array('username' => 'User',
             'name' => "Book",
             'author' => "Author",
             'review' => "Review",
             'score' => "Score",
-            'date' => "Date reviewed");
+            'date' => "Date reviewed",
+            'return' => 'or press esc to go back');
     }
 //    Script which loads the reviews and applies pagination
     include '../modules/reviewPagination.php';

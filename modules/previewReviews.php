@@ -6,8 +6,10 @@
 
     <title>Book Mate - Preview</title>
 
-    <link rel="stylesheet" type="text/css" href="../style/preview.css"/>
-    <link rel="icon" href="../images/icon.ico"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../style/preview.css?v=1">
+    <link rel="icon" href="../images/icon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -23,57 +25,27 @@
     $msg = 'en' ? 'Delete selected review?' : 'Изрий ревю?';
 
 //     If the user has created a new review, it will be inserted into the db.
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['book_name'])) {
-            $sqlQuery = "INSERT INTO `reviews` (`name`, `author`, `review`, `score`)
-                         VALUES ('{$_POST["book_name"]}', '{$_POST['book_author']}',
-                         '{$_POST['book_review']}', '{$_POST['book_score']}')";
-            $result = mysqli_query($link, $sqlQuery) or die(mysqli_error($link));
-        }
-    }
-
-    $sqlQuery = "SELECT * FROM `reviews`";
-    $result = mysqli_query($link, $sqlQuery) or die(mysqli_error($link));
+    include '../scripts/reviewPublish.php';
 
     if ($lang == 'bg') {
-        $headers = array('name' => "Име",
+        $headers = array('username' => 'Потребител',
+            'name' => "Име",
             'author' => "Автор",
             'review' => "Ревю",
             'score' => "Оценка",
             'date' => "Дата на ревю");
     } else {
-        $headers = array('name' => "Book",
+        $headers = array('username' => 'User',
+            'name' => "Book",
             'author' => "Author",
             'review' => "Review",
             'score' => "Score",
             'date' => "Date reviewed");
     }
+//    Script which loads the reviews and applies pagination
+    include '../scripts/reviewPagination.php';
 
-//     Determine whether the query has returned anything.
-    if (mysqli_fetch_array($result)) {
-        echo "<div id='result'><table>
-            <tr>
-                <th>{$headers['name']}</th>
-                <th>{$headers['author']}</th>
-                <th>{$headers['review']}</th>
-                <th>{$headers['score']}</th>
-                <th>{$headers['date']}</th>
-            </tr>";
-
-        while($review = mysqli_fetch_array($result)) {
-            echo "<tr class='selectable'>
-                    <td>{$review['name']}</td>
-                    <td>{$review['author']}</td>
-                    <td>{$review['review']}</td>
-                    <td>{$review['score']}</td>
-                    <td>{$review['date']}</td>
-                </tr></div>";
-        }
-        echo "</table>";
-    } else {
-        echo "<div class='result'><h1>Няма намерени ревюта.</h1></div>";
-    }
-
+//    Script used to remove user reviews
     include '../scripts/reviewRemoval.php';
 ?>
 

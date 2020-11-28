@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Book Mate</title>
 
-    <link rel="stylesheet" type="text/css" href="style/index.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style/index.css">
     <link rel="icon" href="images/icon.ico"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

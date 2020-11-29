@@ -20,6 +20,7 @@
     include '../db/db.php';
     include '../modules/nav.php';
     include '../scripts/defaultLocale.php';
+    include '../scripts/isUserLogged.php';
 
 //    Ternary expression which determines the confirm dialog language.
     $msg = 'en' ? 'Delete selected review?' : 'Изрий ревю?';

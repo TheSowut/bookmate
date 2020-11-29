@@ -21,6 +21,7 @@
     include '../db/db.php';
     include '../modules/nav.php';
     include '../scripts/defaultLocale.php';
+    include '../scripts/isUserLogged.php';
 ?>
 
 <div class="container">

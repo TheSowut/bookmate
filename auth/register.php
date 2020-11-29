@@ -1,23 +1,4 @@
 <link rel="stylesheet" type="text/css" href="style/auth.css">
-<style>
-    .error {
-        width: 92%;
-        margin: 0px auto;
-        padding: 10px;
-        border: 1px solid #a94442;
-        color: #a94442;
-        background: #f2dede;
-        border-radius: 5px;
-        text-align: left;
-    }
-
-    .success {
-        color: #3c763d;
-        background: #dff0d8;
-        border: 1px solid #3c763d;
-        margin-bottom: 20px;
-    }
-</style>
 <script src="scripts/reloadOnEsc.js"></script>
 
 <?php
@@ -72,7 +53,7 @@
                 
                 <div class='inputField'>
                     <label>{$password}
-                        <input name='password' type='password'placeholder='************************' minlength='8' required></label>
+                        <input name='password' type='password' placeholder='************************' minlength='8' required></label>
                     </div>
                     
                 <div class='inputField'>

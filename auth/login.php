@@ -32,10 +32,16 @@
 
     echo "<div class='loginContainer'>
                 <form id='loginForm' method='POST'>
-                <div class='inputField'><label>{$user}<input name='username' type='text' placeholder='thesowut' required></label></div>
-                <div class='inputField'><label>{$password}<input name='password' type='password' placeholder='************************'required></label></div>
-                <button id='submitBtn'>{$login}</button>
-                <p id='goback'>{$return}</p>
-            </form>
+                    <div class='inputField'>
+                        <label>{$user}<input name='username' type='text' placeholder='thesowut' required></label>
+                    </div>
+                    
+                    <div class='inputField'>
+                        <label>{$password}<input name='password' type='password' placeholder='************************' required></label>
+                    </div>
+                    
+                    <button id='submitBtn' name='login_user'>{$login}</button>
+                    <p id='goback'>{$return}</p>
+                </form>
         </div>";
 ?>

@@ -27,9 +27,16 @@
 <body>
 <?php
     session_start();
+    // Database connectivity.
     include 'db/db.php';
+    // The navigation.
     include 'modules/nav.php';
+    // Set default locale for the user.
     include 'scripts/defaultLocale.php';
+    // The logic behind registration & login.
+    include 'auth/server.php';
+    // Display error messages for registration & login.
+    include 'auth/errors.php';
 ?>
 
 <main>
@@ -58,6 +65,7 @@
             )
         );
 
+        // Setup the text fields respectively, to the user's language.
         if ($lang == 'bg') {
             $create = $text['logged']['bulgarian']['create'];
             $browse = $text['logged']['bulgarian']['browse'];
@@ -70,6 +78,8 @@
             $logout = $text['notlogged']['english']['register'];
         }
 
+        // If the user has an account, display the dashboard,
+        // if not display the login & register options.
         if (isset ($_SESSION['userid'])) {
             echo "<a id='create' href='modules/createReview.php'>{$create}</a>
             <a href='modules/previewReviews.php'>{$browse}</a>";
@@ -77,7 +87,8 @@
             echo "<a id='login'>{$login}</a>
             <a id='register'>{$logout}</a>";
         }
-    ?>
+?>
+
 </main>
 </body>
 </html>

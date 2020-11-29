@@ -2,24 +2,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
 <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-<style>
-    .languages {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
+<link rel="stylesheet" type="text/css" href="style/nav.css">
+<!-- Nav style overloading, so it can work in and out of index. -->
+<link rel="stylesheet" type="text/css" href="../style/nav.css">
 
-    img {
-        font-family: "Roboto Light";
-        font-size: 1em;
-        color: #fff;
-    }
-
-    #home {
-        color: #fff;
-        font-size: 1.5em;
-    }
-</style>
 <?php
 //    The first part of the php script will determine,
 //    the current url of the user and will set the
@@ -42,13 +28,12 @@
     }
 
 //    change home href after deploy
-echo "<div class='languages'>
+echo "<nav>
             <a id='home' href='/ssp/Курсов Проект/bookmate/'><i class='fas fa-home'></i></a>
             <img id='lang_en' src='{$src_en}' alt='switch to english'>
             <img id='lang_bg' src='{$src_bg}' alt='switch to bulgarian'>
-        </div>";
+        </nav>";
     ?>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">

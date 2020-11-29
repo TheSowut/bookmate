@@ -7,17 +7,17 @@
 <link rel="stylesheet" type="text/css" href="../style/nav.css">
 
 <?php
-//    The first part of the php script will determine,
-//    the current url of the user and will set the
-//    img src accordingly to his current location.
+//   The first part of the php script will determine,
+//   the current url of the user and will set the
+//   img src accordingly to his current location.
 
-//    Obtain the current URL.
+    //  Obtain the current URL.
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-//    Obtain the URL endpoint.
+    //  Obtain the URL endpoint.
     $endpoint = array_slice(explode('/', $url), -1)[0];
 
-//    The default src which will be active on the index page.
+    //  The default src which will be active on the index page.
     $src_en = 'images/flag_en.png';
     $src_bg = 'images/flag_bg.png';
 

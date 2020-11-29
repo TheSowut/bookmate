@@ -43,13 +43,13 @@
 
         while ($review = mysqli_fetch_array($result)) {
             echo "<tr>
-                  <td>${review['username']}</td>
-                  <td>{$review['name']}</td>
-                  <td>{$review['author']}</td>
-                  <td>{$review['review']}</td>
-                  <td>{$review['score']}</td>
-                  <td>{$review['date']}</td>
-              </tr>";
+                    <td>{$review['username']}</td>
+                    <td>{$review['name']}</td>
+                    <td>{$review['author']}</td>
+                    <td>{$review['review']}</td>
+                    <td>{$review['score']}</td>
+                    <td>{$review['date']}</td>
+                </tr>";
         }
 
         echo "</table><div class='pagination'>";

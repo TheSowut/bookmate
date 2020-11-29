@@ -11,17 +11,8 @@
     <link rel="icon" href="images/icon.ico"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#login').click(handleLogin = () => {
-                $('main').load('auth/login.php');
-            })
-
-            $('#register').click(handleLogout = () => {
-                $('main').load('auth/register.php');
-            })
-        })
-    </script>
+<!-- AJAX script to load the selected authentication module. -->
+    <script src="scripts/loadAuthentication.js"></script>
 
 </head>
 <body>

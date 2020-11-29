@@ -12,7 +12,6 @@
     <link rel="icon" href="../images/icon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../scripts/goBackOnEsc.js"></script>
 
 </head>
 <body>
@@ -24,16 +23,17 @@
     include '../scripts/isUserLogged.php';
 ?>
 
+<!-- Create Review form which sends it's data to previewReviews. -->
 <div class="container">
 <form action="../modules/previewReviews.php" method="POST">
     <?php
+//      Text fields based on the user's choice of language.
         if ($lang == 'bg') {
             $fields = array('name' => "Заглавие:",
                 'author' => "Автор:",
                 'review' => "Рецензия:",
                 'score' => "Оценка:",
-                'button' => 'Запиши ревюто',
-                'return' => 'или натисни esc за връщане');
+                'button' => 'Запиши ревюто');
             $scores = array(1 => "Безинтересна",
                 2 => "Нищо особено",
                 3 => "Има своите плюсове",
@@ -46,8 +46,7 @@
                 'author' => "Author:",
                 'review' => "Review:",
                 'score' => "Score:",
-                'button' => 'Save review',
-                'return' => 'or press esc to go back');
+                'button' => 'Save review');
             $scores = array(1 => "Uninteresting",
                 2 => "Nothing special",
                 3 => "Has its moments",
@@ -62,13 +61,13 @@
             <div class='fieldInput'><label>{$fields['review']} <textarea name='book_review' placeholder='{$placeholders["review"]}' required></textarea></label></div>
             <div class='fieldInput'><label>{$fields['score']} <select name='book_score' required>";
 
+        // Select element, which will get it's options based on the chosen language.
         foreach($scores as $s => $s_info) {
             echo "<option value='{$s}' selected>{$s} - {$s_info}</option>";
         }
 
         echo "</select></label></div>";
         echo "<button type='submit'>{$fields['button']}</button>";
-        echo "<p id='goback'>{$fields['return']}</p>";
     ?>
 </form>
 </div>

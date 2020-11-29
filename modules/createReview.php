@@ -7,12 +7,12 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../style/create.css">
+        <link rel="stylesheet" type="text/css" href="../style/create.css?v=1">
     <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="../images/icon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="scripts/formSubmit.js"></script>
+    <script src="../scripts/goBackOnEsc.js"></script>
 
 </head>
 <body>
@@ -21,17 +21,19 @@
     include '../db/db.php';
     include '../modules/nav.php';
     include '../scripts/defaultLocale.php';
+    include '../scripts/isUserLogged.php';
 ?>
 
 <div class="container">
 <form action="../modules/previewReviews.php" method="POST">
     <?php
         if ($lang == 'bg') {
-            $fields = array('name' => "Име на книга:",
-                'author' => "Автор на книга:",
-                'review' => "Рецензия на книга:",
-                'score' => "Оценка на книга:",
-                'button' => 'Запиши ревюто');
+            $fields = array('name' => "Заглавие:",
+                'author' => "Автор:",
+                'review' => "Рецензия:",
+                'score' => "Оценка:",
+                'button' => 'Запиши ревюто',
+                'return' => 'или натисни esc за връщане');
             $scores = array(1 => "Безинтересна",
                 2 => "Нищо особено",
                 3 => "Има своите плюсове",
@@ -43,8 +45,9 @@
             $fields = array('name' => "Book:",
                 'author' => "Author:",
                 'review' => "Review:",
-                'score' => "Overall score:",
-                'button' => 'Save review');
+                'score' => "Score:",
+                'button' => 'Save review',
+                'return' => 'or press esc to go back');
             $scores = array(1 => "Uninteresting",
                 2 => "Nothing special",
                 3 => "Has its moments",
@@ -54,17 +57,18 @@
                 'review' => 'Example review');
         }
 
-        echo "<label>{$fields['name']} <input name='book_name'' placeholder='1984' required></label>
-            <label>{$fields['author']} <input name='book_author' placeholder='{$placeholders["author"]}' required></label>
-            <label>{$fields['review']} <input name='book_review' placeholder='{$placeholders["review"]}' required></label>
-            <label>{$fields['score']} <select name='book_score' required>";
+        echo "<div class='fieldInput'><label>{$fields['name']} <input name='book_name'' placeholder='1984' required></label></div>
+            <div class='fieldInput'><label>{$fields['author']} <input name='book_author' placeholder='{$placeholders["author"]}' required></label></div>
+            <div class='fieldInput'><label>{$fields['review']} <textarea name='book_review' placeholder='{$placeholders["review"]}' required></textarea></label></div>
+            <div class='fieldInput'><label>{$fields['score']} <select name='book_score' required>";
 
         foreach($scores as $s => $s_info) {
             echo "<option value='{$s}' selected>{$s} - {$s_info}</option>";
         }
 
-        echo "</select></label>";
+        echo "</select></label></div>";
         echo "<button type='submit'>{$fields['button']}</button>";
+        echo "<p id='goback'>{$fields['return']}</p>";
     ?>
 </form>
 </div>

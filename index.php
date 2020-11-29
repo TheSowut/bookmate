@@ -11,30 +11,84 @@
     <link rel="icon" href="images/icon.ico"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="scripts/formSubmit.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#login').click(handleLogin = () => {
+                $('main').load('auth/login.php');
+            })
+
+            $('#register').click(handleLogout = () => {
+                $('main').load('auth/register.php');
+            })
+        })
+    </script>
 
 </head>
 <body>
 <?php
     session_start();
+    // Database connectivity.
     include 'db/db.php';
+    // The navigation.
     include 'modules/nav.php';
+    // Set default locale for the user.
     include 'scripts/defaultLocale.php';
+    // The logic behind registration & login.
+    include 'auth/server.php';
+    // Display error messages for registration & login.
+    include 'auth/errors.php';
 ?>
 
 <main>
     <?php
 //    Obtain the session variable for language and keep it in a var named $lang.
-        $lang = $_SESSION['lang'];
+        $text = array(
+            'logged' => array(
+                'bulgarian' => array(
+                     'create' => 'създай',
+                     'browse' => 'прегледай'
+                ),
+                'english' => array(
+                    'create' => 'create',
+                    'browse' => 'browse'
+                )
+            ),
+            'notlogged' => array(
+                'bulgarian' => array(
+                    'login' => 'логин',
+                    'register' => 'регистрация'
+                ),
+                'english' => array(
+                    'login' => 'login',
+                    'register' => 'register'
+                ),
+            )
+        );
 
+        // Setup the text fields respectively, to the user's language.
         if ($lang == 'bg') {
-            echo "<a id='test' href='modules/createReview.php'>създай</a>
-            <a href='modules/previewReviews.php'>прегледай</a>";
+            $create = $text['logged']['bulgarian']['create'];
+            $browse = $text['logged']['bulgarian']['browse'];
+            $login = $text['notlogged']['bulgarian']['login'];
+            $logout = $text['notlogged']['bulgarian']['register'];
         } else {
-            echo "<a href='modules/createReview.php'>create</a>
-            <a href='modules/previewReviews.php'>browse</a>";
+            $create = $text['logged']['english']['create'];
+            $browse = $text['logged']['english']['browse'];
+            $login = $text['notlogged']['english']['login'];
+            $logout = $text['notlogged']['english']['register'];
         }
-    ?>
+
+        // If the user has an account, display the dashboard,
+        // if not display the login & register options.
+        if (isset ($_SESSION['userid'])) {
+            echo "<a id='create' href='modules/createReview.php'>{$create}</a>
+            <a href='modules/previewReviews.php'>{$browse}</a>";
+        } else {
+            echo "<a id='login'>{$login}</a>
+            <a id='register'>{$logout}</a>";
+        }
+?>
+
 </main>
 </body>
 </html>

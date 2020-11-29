@@ -1,0 +1,19 @@
+.statusMessages {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2em;
+    background-color: rgba(0, 0, 0, 0.65);
+    font-family: 'Roboto', sans-serif;
+    user-select: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.success {
+    color: #3c763d;
+}

@@ -36,12 +36,20 @@ body {
 
 tr {
     transition: .5s all;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgb(255, 255, 255);
 }
 
 tr:not(:first-child):hover {
     cursor: pointer;
-    background: rgba(255, 255, 255, 1);
+    background: rgb(111, 191, 255);
+}
+
+#headers {
+    background: rgb(53, 156, 243);
+}
+
+tr:nth-child(2n+1) {
+    background: rgb(222, 222, 222);
 }
 
 th {
@@ -54,10 +62,6 @@ td {
     font-size: 1.25em;
     padding: 0.3em 1em;
 }
-
-/*th, td {*/
-/*    padding: 0.5em 1.3em;*/
-/*}*/
 
 table, td, th {
     border: 1px solid #000;

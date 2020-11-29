@@ -1,0 +1,28 @@
+nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 8%;
+}
+
+nav img:hover, #home:hover {
+    transform: rotateY(250deg);
+}
+
+img, #home {
+    transition: 1s all;
+}
+
+img {
+    font-family: "Roboto Light";
+    font-size: 1em;
+    color: #fff;
+    cursor: pointer;
+}
+
+#home {
+    color: #fff;
+    font-size: 1.5em;
+}

@@ -1,4 +1,6 @@
 <!-- Acknowledgement to https://www.javatpoint.com/php-pagination for the pagination example. -->
+<link rel="stylesheet" type="text/css" href="../style/pagination.css">
+
 <?php
     // Obtain the total number of pages
     $query = "SELECT * FROM reviews";
@@ -30,7 +32,7 @@
 
     if ($result){
         echo "<div id='result'><table>
-                <tr>
+                <tr id='headers'>
                     <th>{$headers['username']}</th>
                     <th>{$headers['name']}</th>
                     <th>{$headers['author']}</th>
@@ -85,9 +87,5 @@
             echo "<a href='previewReviews.php?page=". ($page + 1) . "'>Next</a></div>";
         }
 
-    } else {
-        echo "<div id='result'><h1>Няма намерени ревюта.</h1></div>";
     }
 ?>
-
-<link rel="stylesheet" type="text/css" href="../style/pagination.css">

@@ -7,7 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../style/create.css?v=1">
+    <link rel="stylesheet" type="text/css" href="../style/create.css">
     <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="../images/icon.ico">
 
@@ -25,7 +25,7 @@
 
 <!-- Create Review form which sends it's data to previewReviews. -->
 <div class="container">
-<form action="../modules/previewReviews.php" method="POST">
+<form id='createReviewForm' action="../modules/previewReviews.php" method="POST">
     <?php
 //      Text fields based on the user's choice of language.
         if ($lang == 'bg') {
@@ -67,7 +67,7 @@
         }
 
         echo "</select></label></div>";
-        echo "<button type='submit'>{$fields['button']}</button>";
+        echo "<button id='btnSubmit' type='submit'>{$fields['button']}</button>";
     ?>
 </form>
 </div>

@@ -4,7 +4,6 @@ nav {
     right: 0;
     display: flex;
     justify-content: space-between;
-    width: 8%;
 }
 
 nav img:hover, #home:hover {
@@ -13,7 +12,11 @@ nav img:hover, #home:hover {
 
 img, #home {
     transition: 1s all;
-    padding: 5px;
+    padding: 7px;
+}
+
+#home {
+    padding: 5px
 }
 
 img {
@@ -26,4 +29,14 @@ img {
 #home {
     color: #fff;
     font-size: 1.5em;
+}
+
+.langButton {
+    background: none;
+    outline: none;
+}
+
+#changeLanguage {
+    display: flex;
+    justify-content: row;
 }

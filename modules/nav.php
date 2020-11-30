@@ -7,9 +7,9 @@
 <link rel="stylesheet" type="text/css" href="../style/nav.css">
 
 <?php
-//   The first part of the php script will determine,
-//   the current url of the user and will set the
-//   img src accordingly to his current location.
+    //  The first part of the php script will determine,
+    //  the current url of the user and will set the
+    //  img src accordingly to his current location.
 
     //  Obtain the current URL.
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -21,31 +21,29 @@
     $src_en = 'images/flag_en.png';
     $src_bg = 'images/flag_bg.png';
 
-//    If the user isn't on the index page, the src is modified.
+    //  If the user isn't on the index page, the src is modified.
     if ($endpoint != '') {
         $src_en = "../{$src_en}";
         $src_bg = "../{$src_bg}";
     }
 
-//    change home href after deploy
+    //  TODO: Change home href after deploy
 echo "<nav>
-            <a id='home' href='/ssp/Курсов Проект/bookmate/'><i class='fas fa-home'></i></a>
-            <img id='lang_en' src='{$src_en}' alt='switch to english'>
-            <img id='lang_bg' src='{$src_bg}' alt='switch to bulgarian'>
+        <a id='home' href='/ssp/Курсов Проект/bookmate/'><i class='fas fa-home'></i></a>
+            <form name='changeLanguage' method='POST'>
+                <button class='langButton' name='lang_en' type='submit'><img id='lang_en' src='{$src_en}' alt='switch to english'></button>
+                <button class='langButton' name='lang_bg' type='submit'><img id='lang_bg' src='{$src_bg}' alt='switch to bulgarian'></button>
+            </form>
         </nav>";
-    ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#lang_en').click(function() {
-            // php script to change session var lang to en
-            // location.reload();
-        })
+    // Check whether the user has chosen to change the language.
+    // Change the language to english.
+    if (isset ($_POST['lang_en'])) {
+        $_SESSION['lang'] = 'en';
+    }
 
-        $('#lang_bg').click(function() {
-           // php script to change session var lang to bg
-           // location.reload();
-        })
-    })
-</script>
+    // Change the language to bulgarian.
+    if (isset ($_POST['lang_bg'])) {
+        $_SESSION['lang'] = 'bg';
+    }
+?>

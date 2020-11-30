@@ -33,7 +33,7 @@
     }
 
     echo "<div class='loginContainer'>
-                <form id='loginForm' method='POST'>
+                <form id='authForm' method='POST'>
                     <div class='inputField'>
                         <label>{$user}<input name='username' type='text' placeholder='thesowut' required></label>
                     </div>

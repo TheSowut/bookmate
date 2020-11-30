@@ -34,14 +34,16 @@
             'author' => "Автор",
             'review' => "Ревю",
             'score' => "Оценка",
-            'date' => "Дата на ревю");
+            'date' => "Дата на ревю",
+            'error' => "Няма намерени записи");
     } else {
         $headers = array('username' => 'User',
             'name' => "Book",
             'author' => "Author",
             'review' => "Review",
             'score' => "Score",
-            'date' => "Date reviewed");
+            'date' => "Date reviewed",
+            'error' => "No reviews found.");
     }
 
     // Script which loads the reviews and applies pagination

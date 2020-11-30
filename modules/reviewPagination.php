@@ -27,10 +27,11 @@
     $query = "SELECT `username`, `name`, `author`, `review`, `score`, `date`
                  FROM `users`
                  INNER JOIN `reviews`
-                 ON `users`.`id` = `reviews`.`userid` LIMIT " . $page_first_result . ',' . $results_per_page;
+                 ON `users`.`id` = `reviews`.`userid`
+                 LIMIT " . $page_first_result . ',' . $results_per_page;
     $result = mysqli_query($link, $query);
 
-    if ($result){
+    if (mysqli_num_rows($result) != 0) {
         echo "<div id='result'><table>
                 <tr id='headers'>
                     <th>{$headers['username']}</th>
@@ -86,6 +87,7 @@
         if($page < $total_pages){
             echo "<a href='previewReviews.php?page=". ($page + 1) . "'>Next</a></div>";
         }
-
+    } else {
+        echo "<div id='result'><h1>{$headers['error']}</h1></div>";
     }
 ?>

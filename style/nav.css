@@ -13,6 +13,7 @@ nav img:hover, #home:hover {
 
 img, #home {
     transition: 1s all;
+    padding: 5px;
 }
 
 img {

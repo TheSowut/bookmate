@@ -4,7 +4,7 @@
         if (isset($_POST['book_name'])) {
             $sqlQuery = "INSERT INTO `reviews` (`userid`, `name`, `author`, `review`, `score`)
                              VALUES (
-                                 '1',
+                                 '{$_SESSION['userid']}',
                                  '{$_POST["book_name"]}',
                                  '{$_POST['book_author']}',
                                  '{$_POST['book_review']}',

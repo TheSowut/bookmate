@@ -8,7 +8,7 @@
     $number_of_result = mysqli_num_rows($result);
 
     // Limit the results displayed per page
-    $results_per_page = 5;
+    $results_per_page = 12;
 
     // Determine total number of pages available
     $number_of_page = ceil ($number_of_result / $results_per_page);
@@ -21,17 +21,46 @@
     }
 
     // Determine SQL LIMIT starting number for the results on the displaying page
-    $page_first_result = ($page-1) * $results_per_page;
+    $page_first_result = ($page - 1) * $results_per_page;
 
     // Obtain all the reviews and the user who wrote them.
-    $query = "SELECT `username`, `name`, `author`, `review`, `score`, `date`
+    $queryAll = "SELECT `username`, `name`, `author`, `review`, `score`, `date`
                  FROM `users`
                  INNER JOIN `reviews`
-                 ON `users`.`id` = `reviews`.`userid` LIMIT " . $page_first_result . ',' . $results_per_page;
-    $result = mysqli_query($link, $query);
+                 ON `users`.`id` = `reviews`.`userid`
+                 LIMIT " . $page_first_result . ',' . $results_per_page;
 
-    if ($result){
-        echo "<div id='result'><table>
+    // Obtain only the reviews written by the currently logged in user.
+    $queryMine = "SELECT `username`, `name`, `author`, `review`, `score`, `date`
+                 FROM `users`
+                 INNER JOIN `reviews`
+                 ON `users`.`id` = `reviews`.`userid`
+                 WHERE `userid` = '{$_SESSION['userid']}' 
+                 LIMIT " . $page_first_result . ',' . $results_per_page;
+
+    // Check if the user has decided to preview only his own reviews,
+    // otherwise display all the reviews.
+    if (isset ($_POST['myReviews'])) {
+        $count_query = "SELECT COUNT(*) FROM reviews WHERE userid = '{$_SESSION['userid']}'";
+        $result = mysqli_query($link, $queryMine);
+    } else {
+        $count_query = "SELECT COUNT(*) FROM reviews";
+        $result = mysqli_query($link, $queryAll);
+    }
+
+    if (mysqli_num_rows($result) != 0) {
+        echo "<div id='result'><table id='reviewsTable'>
+            
+                <div id='filterForm'>
+                    <form method='POST'>";
+
+                    // If the user is located on the first page, display filtering options.
+                    if ($page == 1) {
+                        echo "<tr><td class='filterTd'><button class='filterBtn myReviews' name='allReviews' id='allReviews'>{$headers['allreviews']}</button></td>
+                            <td class='filterTd'><button class='filterBtn' name='myReviews' id='myReviews'>{$headers['myreviews']}</button></td></tr>";
+                    }
+
+                echo "</div></form>
                 <tr id='headers'>
                     <th>{$headers['username']}</th>
                     <th>{$headers['name']}</th>
@@ -43,18 +72,17 @@
 
         while ($review = mysqli_fetch_array($result)) {
             echo "<tr>
-                  <td>${review['username']}</td>
-                  <td>{$review['name']}</td>
-                  <td>{$review['author']}</td>
-                  <td>{$review['review']}</td>
-                  <td>{$review['score']}</td>
-                  <td>{$review['date']}</td>
-              </tr>";
+                    <td>{$review['username']}</td>
+                    <td>{$review['name']}</td>
+                    <td>{$review['author']}</td>
+                    <td>{$review['review']}</td>
+                    <td>{$review['score']}</td>
+                    <td>{$review['date']}</td>
+                </tr>";
         }
 
         echo "</table><div class='pagination'>";
 
-        $count_query = "SELECT COUNT(*) FROM reviews";
         $rs_result = mysqli_query($link, $count_query);
         $row = mysqli_fetch_row($rs_result);
         $total_records = $row[0];
@@ -87,5 +115,7 @@
             echo "<a href='previewReviews.php?page=". ($page + 1) . "'>Next</a></div>";
         }
 
+    } else {
+        echo "<div id='result'><h1>{$headers['error']}</h1></div>";
     }
 ?>

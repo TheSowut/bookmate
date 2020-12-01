@@ -26,10 +26,12 @@ if (isset ($_POST['reg_user'])) {
     $user = mysqli_fetch_assoc($result);
 
     if ($user) {
+        // If a record of the username is found in the db, an error is returned.
         if ($user['username'] === $username) {
             array_push($errors, "Username already taken.");
         }
 
+        // If a record of the email is found, an error is returned as well.
         if ($user['email'] === $email) {
             array_push($errors, "Email already taken.");
         }
@@ -81,9 +83,9 @@ if (isset ($_POST['login_user'])) {
                 $userid = $r['id'];
             }
 
+            //   Save the user's id as a session variable, which will be later used for
+            //  creating reviews & previewing.
             $_SESSION['userid'] = $userid;
-
-            echo "{$_SESSION['userid']}";
         } else {
             array_push($errors, 'Invalid credentials.');
         }

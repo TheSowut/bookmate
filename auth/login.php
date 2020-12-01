@@ -5,6 +5,7 @@
     session_start();
     include '../scripts/defaultLocale.php';
 
+//  An array of messages, depending on the user's choice of language.
     $text = array('bulgarian' =>
         array ('username' => 'Потребител',
             'password' => 'Парола',
@@ -18,6 +19,7 @@
         )
     );
 
+//  Saving the messages are variables for later usage.
     if ($lang == 'bg') {
         $user = $text['bulgarian']['username'];
         $password = $text['bulgarian']['password'];
@@ -31,7 +33,7 @@
     }
 
     echo "<div class='loginContainer'>
-                <form id='loginForm' method='POST'>
+                <form id='authForm' method='POST'>
                     <div class='inputField'>
                         <label>{$user}<input name='username' type='text' placeholder='thesowut' required></label>
                     </div>

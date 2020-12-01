@@ -7,12 +7,11 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../style/create.css?v=1">
+    <link rel="stylesheet" type="text/css" href="../style/create.css">
     <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="../images/icon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../scripts/goBackOnEsc.js"></script>
 
 </head>
 <body>
@@ -24,16 +23,17 @@
     include '../scripts/isUserLogged.php';
 ?>
 
+<!-- Create Review form which sends it's data to previewReviews. -->
 <div class="container">
-<form action="../modules/previewReviews.php" method="POST">
+<form id='createReviewForm' action="../modules/previewReviews.php" method="POST">
     <?php
+//      Text fields based on the user's choice of language.
         if ($lang == 'bg') {
             $fields = array('name' => "Заглавие:",
                 'author' => "Автор:",
                 'review' => "Рецензия:",
                 'score' => "Оценка:",
-                'button' => 'Запиши ревюто',
-                'return' => 'или натисни esc за връщане');
+                'button' => 'Запиши ревюто');
             $scores = array(1 => "Безинтересна",
                 2 => "Нищо особено",
                 3 => "Има своите плюсове",
@@ -46,8 +46,7 @@
                 'author' => "Author:",
                 'review' => "Review:",
                 'score' => "Score:",
-                'button' => 'Save review',
-                'return' => 'or press esc to go back');
+                'button' => 'Save review');
             $scores = array(1 => "Uninteresting",
                 2 => "Nothing special",
                 3 => "Has its moments",
@@ -62,13 +61,13 @@
             <div class='fieldInput'><label>{$fields['review']} <textarea name='book_review' placeholder='{$placeholders["review"]}' required></textarea></label></div>
             <div class='fieldInput'><label>{$fields['score']} <select name='book_score' required>";
 
+        // Select element, which will get it's options based on the chosen language.
         foreach($scores as $s => $s_info) {
             echo "<option value='{$s}' selected>{$s} - {$s_info}</option>";
         }
 
         echo "</select></label></div>";
-        echo "<button type='submit'>{$fields['button']}</button>";
-        echo "<p id='goback'>{$fields['return']}</p>";
+        echo "<button id='btnSubmit' type='submit'>{$fields['button']}</button>";
     ?>
 </form>
 </div>

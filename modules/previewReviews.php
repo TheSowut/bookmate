@@ -12,7 +12,7 @@
     <link rel="icon" href="../images/icon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../scripts/goBackOnEsc.js"></script>
+
 </head>
 <body>
 <?php
@@ -22,34 +22,37 @@
     include '../scripts/defaultLocale.php';
     include '../scripts/isUserLogged.php';
 
-//    Ternary expression which determines the confirm dialog language.
+
+    // Ternary expression which determines the confirm dialog language.
     $msg = 'en' ? 'Delete selected review?' : 'Изрий ревю?';
 
-//     If the user has created a new review, it will be inserted into the db.
+    // If the user has created a new review, it will be inserted into the db.
     include '../scripts/reviewPublish.php';
 
     if ($lang == 'bg') {
-        $headers = array('username' => 'Потребител',
+        $headers = array('allreviews' => 'Всички ревюта',
+            'myreviews' => 'Мои ревюта',
+            'username' => 'Потребител',
             'name' => "Име",
             'author' => "Автор",
             'review' => "Ревю",
             'score' => "Оценка",
             'date' => "Дата на ревю",
-            'return' => 'или натисни esc за връщане');
+            'error' => "Няма намерени записи");
     } else {
-        $headers = array('username' => 'User',
+        $headers = array('allreviews' => 'All reviews',
+            'myreviews' => 'My reviews',
+            'username' => 'User',
             'name' => "Book",
             'author' => "Author",
             'review' => "Review",
             'score' => "Score",
             'date' => "Date reviewed",
-            'return' => 'or press esc to go back');
+            'error' => "No reviews found.");
     }
-//    Script which loads the reviews and applies pagination
-    include '../modules/reviewPagination.php';
 
-//    Script used to remove user reviews
-    include '../scripts/reviewRemoval.php';
+    // Script which loads the reviews and applies pagination
+    include '../modules/reviewPagination.php';
 ?>
 
 </body>

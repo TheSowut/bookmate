@@ -20,6 +20,19 @@
     background: rgba(255, 255, 255, 1);
 }
 
+.filterBtn {
+    width: 100%;
+    background: none;
+    outline: none;
+    font-size: 1.2em;
+    padding: 0.3em 1em;
+    cursor: pointer;
+}
+
+.filterTd {
+    padding: 0;
+}
+
 #active {
     background: rgb(53, 156, 243);
 }

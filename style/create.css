@@ -23,20 +23,20 @@ body  {
     align-items: center;
 }
 
-form {
+#createReviewForm {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 60vh;
+    height: 55vh;
 }
 
-form label {
+#createReviewForm label {
     color: #fff;
     font-size: 1.6em;
 }
 
-form input {
+#createReviewForm input {
     border: 1px solid black;
     font-size: 0.7em;
     padding: 0.2em;
@@ -71,13 +71,14 @@ textarea {
     resize: none;
 }
 
-button {
+#btnSubmit {
     font-size: 1.3em;
     padding: 0.5em 2em;
     background-color: #fff;
     border-radius: 10px;
     transition: .5s all;
     cursor: pointer;
+    width: 100%;
 }
 
 #goback {

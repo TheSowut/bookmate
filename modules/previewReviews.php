@@ -22,6 +22,7 @@
     include '../scripts/defaultLocale.php';
     include '../scripts/isUserLogged.php';
 
+
     // Ternary expression which determines the confirm dialog language.
     $msg = 'en' ? 'Delete selected review?' : 'Изрий ревю?';
 
@@ -29,7 +30,9 @@
     include '../scripts/reviewPublish.php';
 
     if ($lang == 'bg') {
-        $headers = array('username' => 'Потребител',
+        $headers = array('allreviews' => 'Всички ревюта',
+            'myreviews' => 'Мои ревюта',
+            'username' => 'Потребител',
             'name' => "Име",
             'author' => "Автор",
             'review' => "Ревю",
@@ -37,7 +40,9 @@
             'date' => "Дата на ревю",
             'error' => "Няма намерени записи");
     } else {
-        $headers = array('username' => 'User',
+        $headers = array('allreviews' => 'All reviews',
+            'myreviews' => 'My reviews',
+            'username' => 'User',
             'name' => "Book",
             'author' => "Author",
             'review' => "Review",
@@ -48,9 +53,6 @@
 
     // Script which loads the reviews and applies pagination
     include '../modules/reviewPagination.php';
-
-    // Script used to remove user reviews
-    include '../scripts/reviewRemoval.php';
 ?>
 
 </body>

@@ -1,5 +1,6 @@
 <!-- Acknowledgement to https://www.javatpoint.com/php-pagination for the pagination example. -->
 <link rel="stylesheet" type="text/css" href="../style/pagination.css">
+
 <?php
     // Obtain the total number of pages
     $query = "SELECT * FROM reviews";
@@ -40,8 +41,10 @@
     // Check if the user has decided to preview only his own reviews,
     // otherwise display all the reviews.
     if (isset ($_POST['myReviews'])) {
+        $count_query = "SELECT COUNT(*) FROM reviews WHERE userid = '{$_SESSION['userid']}'";
         $result = mysqli_query($link, $queryMine);
     } else {
+        $count_query = "SELECT COUNT(*) FROM reviews";
         $result = mysqli_query($link, $queryAll);
     }
 
@@ -53,8 +56,8 @@
 
                     // If the user is located on the first page, display filtering options.
                     if ($page == 1) {
-                        echo "<tr><td class='filterTd'><button class='filterBtn' name='allReviews'>{$headers['allreviews']}</button></td>
-                            <td class='filterTd'><button class='filterBtn' name='myReviews'>{$headers['myreviews']}</button></td></tr>";
+                        echo "<tr><td class='filterTd'><button class='filterBtn myReviews' name='allReviews' id='allReviews'>{$headers['allreviews']}</button></td>
+                            <td class='filterTd'><button class='filterBtn' name='myReviews' id='myReviews'>{$headers['myreviews']}</button></td></tr>";
                     }
 
                 echo "</div></form>
@@ -80,7 +83,6 @@
 
         echo "</table><div class='pagination'>";
 
-        $count_query = "SELECT COUNT(*) FROM reviews";
         $rs_result = mysqli_query($link, $count_query);
         $row = mysqli_fetch_row($rs_result);
         $total_records = $row[0];

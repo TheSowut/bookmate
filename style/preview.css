@@ -64,7 +64,7 @@ td {
     padding: 0.3em 1em;
 }
 
-table, td, th {
+tbody table, td, th {
     border: 1px solid #000;
 }
 

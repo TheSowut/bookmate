@@ -3,4 +3,3 @@
         // change endpoint after deploying
         header("Location: /ssp/Курсов Проект/bookmate/");
     }
-?>

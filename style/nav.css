@@ -6,29 +6,25 @@ nav {
     justify-content: space-between;
 }
 
-nav img:hover, #home:hover {
+nav img:hover, #home:hover, #logout:hover {
     transform: rotateY(250deg);
 }
 
-img, #home {
+img, #home, #logout {
     transition: 1s all;
     padding: 7px;
 }
 
-#home {
-    padding: 5px
-}
-
-img {
-    font-family: "Roboto Light";
-    font-size: 1em;
+#home, #logout {
     color: #fff;
+    font-size: 1.5em;
+    padding: 4px 8px 0px 5px;
     cursor: pointer;
 }
 
-#home {
-    color: #fff;
-    font-size: 1.5em;
+#logout {
+    background: none;
+    padding-top: 5px;
 }
 
 .langButton {
@@ -38,5 +34,5 @@ img {
 
 #changeLanguage {
     display: flex;
-    justify-content: row;
+    flex-direction: row;
 }

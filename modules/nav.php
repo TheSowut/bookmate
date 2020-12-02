@@ -3,8 +3,11 @@
 <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="style/nav.css">
-<!-- Nav style overloading, so it can work in and beyond index. -->
+<script src="scripts/showNav.js"></script>
+<!-- Nav style & showNav overloading, so they can work in and beyond index. -->
 <link rel="stylesheet" type="text/css" href="../style/nav.css">
+<script src="../scripts/showNav.js"></script>
+
 
 <?php
     //  The first part of the php script will determine,

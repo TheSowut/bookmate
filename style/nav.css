@@ -4,12 +4,15 @@ nav {
     right: 0;
     display: flex;
     justify-content: space-between;
-    /*opacity: 0;*/
+    opacity: 0;
+}
+
+nav i {
+    cursor: pointer;
 }
 
 nav i, nav img {
     transition: 1s all;
-    cursor: pointer;
 }
 
 nav i:hover, nav img:hover {
@@ -24,16 +27,17 @@ img, #home, #logout {
     color: #fff;
     font-size: 1.5em;
     padding: 4px 8px 0px 5px;
+    background: none;
 }
 
 #logout {
-    background: none;
     padding-top: 5px;
 }
 
 .langButton {
     background: none;
     outline: none;
+    cursor: pointer;
 }
 
 #changeLanguage {

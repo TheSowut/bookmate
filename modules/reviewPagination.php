@@ -56,12 +56,12 @@
 
                     // If the user is located on the first page, display filtering options.
                     if ($page == 1) {
-                        echo "<tr><td class='filterTd'><button class='filterBtn myReviews' name='allReviews' id='allReviews'>{$headers['allreviews']}</button></td>
-                            <td class='filterTd'><button class='filterBtn' name='myReviews' id='myReviews'>{$headers['myreviews']}</button></td></tr>";
+                        echo "<thead><tr><td class='filterTd'><button class='filterBtn myReviews' name='allReviews' id='allReviews'>{$headers['allreviews']}</button></td>
+                            <td class='filterTd'><button class='filterBtn' name='myReviews' id='myReviews'>{$headers['myreviews']}</button></td></tr></thead>";
                     }
 
                 echo "</div></form>
-                <tr id='headers'>
+                <tbody><tr id='headers'>
                     <th>{$headers['username']}</th>
                     <th>{$headers['name']}</th>
                     <th>{$headers['author']}</th>
@@ -81,7 +81,7 @@
                 </tr>";
         }
 
-        echo "</table><div class='pagination'>";
+        echo "</tbody></table><div class='pagination'>";
 
         $rs_result = mysqli_query($link, $count_query);
         $row = mysqli_fetch_row($rs_result);

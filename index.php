@@ -20,14 +20,14 @@
     session_start();
     // Database connectivity.
     include 'db/db.php';
-    // The navigation.
-    include 'modules/nav.php';
-    // Set default locale for the user.
-    include 'scripts/defaultLocale.php';
     // The logic behind registration & login.
     include 'auth/server.php';
     // Display error messages for registration & login.
     include 'auth/errors.php';
+    // The navigation.
+    include 'modules/nav.php';
+    // Set default locale for the user.
+    include 'scripts/defaultLocale.php';
 ?>
 
 <main>

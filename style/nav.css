@@ -4,39 +4,43 @@ nav {
     right: 0;
     display: flex;
     justify-content: space-between;
+    opacity: 0;
 }
 
-nav img:hover, #home:hover {
-    transform: rotateY(250deg);
-}
-
-img, #home {
-    transition: 1s all;
-    padding: 7px;
-}
-
-#home {
-    padding: 5px
-}
-
-img {
-    font-family: "Roboto Light";
-    font-size: 1em;
-    color: #fff;
+nav i {
     cursor: pointer;
 }
 
-#home {
+nav i, nav img {
+    transition: 1s all;
+}
+
+nav i:hover, nav img:hover {
+    transform: rotateY(250deg);
+}
+
+img, #home, #logout {
+    padding: 7px;
+}
+
+#home, #logout {
     color: #fff;
     font-size: 1.5em;
+    padding: 4px 8px 0px 5px;
+    background: none;
+}
+
+#logout {
+    padding-top: 5px;
 }
 
 .langButton {
     background: none;
     outline: none;
+    cursor: pointer;
 }
 
 #changeLanguage {
     display: flex;
-    justify-content: row;
+    flex-direction: row;
 }

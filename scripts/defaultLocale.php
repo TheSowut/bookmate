@@ -6,4 +6,3 @@
     }
 
     $lang = $_SESSION['lang'];
-?>

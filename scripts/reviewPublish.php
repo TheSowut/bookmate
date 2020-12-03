@@ -1,5 +1,4 @@
 <?php
-    // REFACTOR TO USE CURRENT USERID
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['book_name'])) {
             $userid = $_SESSION['userid'];
@@ -20,4 +19,3 @@
             $result = mysqli_query($link, $sqlQuery) or die("DB Insertion error, please try again!");
         }
     }
-?>

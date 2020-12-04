@@ -58,7 +58,7 @@
 
         echo "<div class='fieldInput'><label>{$fields['name']} <input name='book_name'' placeholder='1984' required></label></div>
             <div class='fieldInput'><label>{$fields['author']} <input name='book_author' placeholder='{$placeholders["author"]}' required></label></div>
-            <div class='fieldInput'><label>{$fields['review']} <textarea name='book_review' placeholder='{$placeholders["review"]}' required></textarea></label></div>
+            <div class='fieldInput'><label>{$fields['review']} <textarea name='book_review' placeholder='{$placeholders["review"]}' maxlength='32' required></textarea></label></div>
             <div class='fieldInput'><label>{$fields['score']} <select name='book_score' required>";
 
         // Select element, which will get it's options based on the chosen language.

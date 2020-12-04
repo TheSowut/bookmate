@@ -8,7 +8,7 @@
     $number_of_result = mysqli_num_rows($result);
 
     // Limit the results displayed per page
-    $results_per_page = 12;
+    $results_per_page = 8;
 
     // Determine total number of pages available
     $number_of_page = ceil ($number_of_result / $results_per_page);
